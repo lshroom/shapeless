@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapeless Composite</title>
+    <style>
+        body { margin: 0; padding: 0; background: #1a1a2e; overflow: hidden; }
+        #container { position: relative; width: 100vw; height: 100vh; }
+        iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        #layer1 { z-index: 1; }
+        #layer2 { z-index: 2; mix-blend-mode: screen; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <iframe id="layer1" src="https://vdo.ninja/?scene&room=shapeless&style=0" allow="camera;microphone;autoplay"></iframe>
+        <iframe id="layer2" src="https://vdo.ninja/?scene&room=shapeless&style=0" allow="camera;microphone;autoplay"></iframe>
+    </div>
+</body>
+</html>
+```
+
+**This will:**
+- Auto-load both layers with the shapeless room
+- Blend them with screen mode
+- Work immediately - no setup needed
+
+---
+
+**Upload this to your GitHub repo** and use:
+```
+https://lshroom.github.io/shapeless/composite.html
