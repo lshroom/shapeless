@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Shapeless Session</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Georgia', serif;
+            color: #f0e68c;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .skull {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #c9a227;
+            font-style: italic;
+        }
+
+        .join-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            color: #1a1a2e;
+            background: linear-gradient(180deg, #f0e68c 0%, #c9a227 100%);
+            border: 4px solid #8b7500;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+            background: linear-gradient(180deg, #fff8b0 0%, #d4af37 100%);
+        }
+
+        .join-btn:active {
+            transform: translateY(1px);
+        }
+
+        .decoration {
+            margin-top: 40px;
+            font-size: 2rem;
+            opacity: 0.6;
+        }
+
+        .room-info {
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            border: 1px solid #c9a227;
+            font-size: 0.9rem;
+        }
+
+        .room-info span {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="skull">☠️</div>
+        <h1>Join Shapeless Session</h1>
+        <p class="subtitle">Ahoy! Ye be boarding the stream, matey!</p>
+
+        <button class="join-btn" onclick="joinSession()">
+            ⚓ Come Aboard ⚓
+        </button>
+
+        <div class="room-info" id="roomInfo" style="display: none;">
+            Sailing to: <span id="roomDisplay"></span>
+        </div>
+
+        <div class="decoration">
+            ⚔️ 🏴‍☠️ ⚔️
+        </div>
+
+        <p class="footer">Powered by VDO.Ninja</p>
+    </div>
+
+    <script>
+        // Parse URL parameters (from Wix or direct link)
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Configurable parameters from URL
+        const room = urlParams.get('room') || urlParams.get('r');
+        const pushId = urlParams.get('push') || urlParams.get('id') || generatePushId();
+        const password = urlParams.get('password') || urlParams.get('pw');
+        const label = urlParams.get('label') || urlParams.get('name');
+        const quality = urlParams.get('quality') || urlParams.get('q');
+
+        // Generate a unique push ID if not provided
+        function generatePushId() {
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            let id = 'shapeless_';
+            for (let i = 0; i < 8; i++) {
+                id += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return id;
+        }
+
+        // Show room info if room is specified
+        if (room) {
+            document.getElementById('roomInfo').style.display = 'block';
+            document.getElementById('roomDisplay').textContent = room;
+        }
+
+        function joinSession() {
+            // Build VDO.ninja URL
+            let vdoUrl = 'https://vdo.ninja/?push=' + encodeURIComponent(pushId);
+
+            if (room) {
+                vdoUrl += '&room=' + encodeURIComponent(room);
+            }
+            if (password) {
+                vdoUrl += '&password=' + encodeURIComponent(password);
+            }
+            if (label) {
+                vdoUrl += '&label=' + encodeURIComponent(label);
+            }
+            if (quality) {
+                vdoUrl += '&quality=' + encodeURIComponent(quality);
+            }
+
+            // Mobile-friendly settings
+            vdoUrl += '&autostart';  // Auto-start camera
+            vdoUrl += '&webcam';     // Prefer webcam
+
+            // Open VDO.ninja
+            window.location.href = vdoUrl;
+        }
+
+        // Debug: Log the constructed URL parameters
+        console.log('Room:', room);
+        console.log('Push ID:', pushId);
+        console.log('Password:', password ? '***' : 'none');
+    </script>
+</body>
+</html>
