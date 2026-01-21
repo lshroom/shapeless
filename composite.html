@@ -4,85 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shapeless Composite</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #0a0e27; font-family: Arial, sans-serif; color: #fff; }
-    
-    #video-container {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-    }
-    
-    iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-    
-    #layer1 { z-index: 1; opacity: 1; }
-    #layer2 { z-index: 2; opacity: 0.7; mix-blend-mode: screen; }
-    
-    #controls {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(0,0,0,0.9);
-        padding: 20px;
-        border-radius: 10px;
-        z-index: 1000;
-        max-width: 300px;
-    }
-    
-    .control-group { margin-bottom: 15px; }
-    
-    label {
-        display: block;
-        margin-bottom: 5px;
-        color: #00ffff;
-        font-size: 12px;
-    }
-    
-    input[type="range"] { width: 100%; }
-    
-    select {
-        width: 100%;
-        padding: 5px;
-        background: #1a1a2e;
-        color: #fff;
-        border: 1px solid #00ffff;
-        border-radius: 5px;
-    }
-    
-    .value-display {
-        float: right;
-        color: #00ffff;
-    }
-    
-    button {
-        background: #00ffff;
-        color: #000;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 10px;
-        font-weight: bold;
-    }
-    
-    button:hover { background: #00cccc; }
-    
-    h3 {
-        color: #00ffff;
-        margin-bottom: 15px;
-        font-size: 16px;
-    }
-</style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0e27;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        #video-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        #layer1 {
+            z-index: 1;
+            opacity: 1;
+        }
+        
+        #layer2 {
+            z-index: 2;
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+        
+        #controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00ffff;
+            font-size: 12px;
+        }
+        
+        .value-display {
+            float: right;
+            color: #00ffff;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+        }
+        
+        select {
+            width: 100%;
+            padding: 5px;
+            background: #1a1a2e;
+            color: #fff;
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div id="video-container">
@@ -91,21 +98,16 @@
     </div>
     
     <div id="controls">
-        <h3>🏴‍☠️ Shapeless Composite</h3>
-        
-       function loadDefault() {
-    document.getElementById('layer1').src = 'https://vdo.ninja/?view=shapeless_kitchen';
-    document.getElementById('layer2').src = 'https://vdo.ninja/?view=FFXAuRa';
-}
+        <h3>🏴‍☠️ Shapeless</h3>
         
         <div class="control-group">
-            <label>Layer 2 Opacity <span class="value-display" id="opacity-val">70%</span></label>
-            <input type="range" id="opacity" min="0" max="100" value="70" oninput="updateOpacity(this.value)">
+            <label>Opacity <span class="value-display" id="opacity-val">70%</span></label>
+            <input type="range" id="opacity" min="0" max="100" value="70">
         </div>
         
         <div class="control-group">
             <label>Blend Mode</label>
-            <select id="blend" onchange="updateBlend(this.value)">
+            <select id="blend">
                 <option value="normal">Normal</option>
                 <option value="screen" selected>Screen</option>
                 <option value="multiply">Multiply</option>
@@ -113,31 +115,28 @@
                 <option value="difference">Difference</option>
                 <option value="lighten">Lighten</option>
                 <option value="darken">Darken</option>
-                <option value="color-dodge">Color Dodge</option>
             </select>
         </div>
     </div>
     
     <script>
-        function loadDefault() {
-            const roomURL = 'https://vdo.ninja/?scene&room=shapeless&style=0';
-            document.getElementById('layer1').src = roomURL;
-            document.getElementById('layer2').src = roomURL;
-        }
+        // Load streams on page load
+        window.onload = function() {
+            document.getElementById('layer1').src = 'https://vdo.ninja/?view=shapeless_kitchen';
+            document.getElementById('layer2').src = 'https://vdo.ninja/?view=FFXAuRa';
+        };
         
-        function updateOpacity(value) {
+        // Opacity control
+        document.getElementById('opacity').addEventListener('input', function(e) {
+            const value = e.target.value;
             document.getElementById('layer2').style.opacity = value / 100;
             document.getElementById('opacity-val').textContent = value + '%';
-        }
+        });
         
-        function updateBlend(mode) {
-            document.getElementById('layer2').style.mixBlendMode = mode;
-        }
-        
-        // Auto-load on page load
-        window.onload = function() {
-            loadDefault();
-        };
+        // Blend mode control
+        document.getElementById('blend').addEventListener('change', function(e) {
+            document.getElementById('layer2').style.mixBlendMode = e.target.value;
+        });
     </script>
 </body>
 </html>
