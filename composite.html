@@ -99,7 +99,10 @@
     <div id="controls">
         <h3>🏴‍☠️ Shapeless Composite</h3>
         
-        <button onclick="loadDefault()">Load Shapeless Room</button>
+       function loadDefault() {
+    document.getElementById('layer1').src = 'https://vdo.ninja/?view=shapeless_kitchen';
+    document.getElementById('layer2').src = 'https://vdo.ninja/?view=FFXAuRa';
+}
         
         <div class="control-group">
             <label>Layer 2 Opacity <span class="value-display" id="opacity-val">70%</span></label>
