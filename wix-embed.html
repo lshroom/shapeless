@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shapeless Peace Movement</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Hero Section with Background Image */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 100%);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://i.imgur.com/YOUR_STUDIO_IMAGE.jpg') center/cover;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 40px 20px;
+}
+
+.logo-container {
+    margin-bottom: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.logo {
+    width: 200px;
+    height: 200px;
+    filter: drop-shadow(0 0 40px rgba(0, 255, 255, 0.8));
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% { filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.6)); }
+    100% { filter: drop-shadow(0 0 60px rgba(0, 255, 255, 1)); }
+}
+
+h1 {
+    font-size: 4em;
+    background: linear-gradient(135deg, #00ffff, #ff00ff, #00ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.flags {
+    font-size: 3em;
+    margin: 20px 0;
+}
+
+.tagline {
+    font-size: 1.8em;
+    color: #fff;
+    margin: 20px 0;
+    font-weight: 300;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #aaa;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+/* Studio Image Section */
+.studio-section {
+    position: relative;
+    padding: 100px 20px;
+    background: #000;
+}
+
+.studio-image {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 80px rgba(0, 255, 255, 0.4);
+    border: 3px solid rgba(0, 255, 255, 0.5);
+}
+
+/* Vision Section with Holographic Effect */
+.vision-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #0a0e27 0%, #2d1b69 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.vision-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+.vision-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.vision-content h2 {
+    font-size: 3em;
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+}
+
+.vision-content p {
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* Features Grid */
+.features {
+    padding: 100px 20px;
+    background: #000;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 40px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+
+.feature:hover::before {
+    transform: rotate(45deg) translate(50%, 50%);
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 255, 255, 0.4);
+    border-color: #00ffff;
+}
+
+.feature-icon {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    font-size: 1.8em;
+    color: #00ffff;
+    margin-bottom: 15px;
+}
+
+.feature p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+/* CTA Buttons */
+.cta-section {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #1a1a3e 0%, #0a0e27 100%);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 3em;
+    color: #00ffff;
+    margin-bottom: 50px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 20px 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #00ffff, #0088ff);
+    color: #000;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #ff00ff, #8800ff);
+    color: #fff;
+}
+
+.btn-tertiary {
+    background: linear-gradient(135deg, #00ff00, #008800);
+    color: #000;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 40px rgba(0, 255, 255, 0.5);
+}
+
+/* Cityscape Section */
+.cityscape {
+    position: relative;
+    height: 600px;
+    background: url('https://i.imgur.com/YOUR_CITYSCAPE_IMAGE.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cityscape::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(10, 14, 39, 0.8), rgba(26, 26, 62, 0.8));
+}
+
+.cityscape-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+}
+
+.cityscape-content h2 {
+    font-size: 3.5em;
+    color: #00ffff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+}
+
+.cityscape-content p {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+/* Stats */
+.stats {
+    padding: 80px 20px;
+    background: #000;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+    border-radius: 20px;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+}
+
+.stat-number {
+    font-size: 4em;
+    font-weight: bold;
+    background: linear-gradient(135deg, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: 1.2em;
+    color: #aaa;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5em; }
+    .tagline { font-size: 1.3em; }
+    .logo { width: 150px; height: 150px; }
+    .feature h3 { font-size: 1.5em; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="logo-container">
+            <!-- Replace with your neon skull logo -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ctext x='50%25' y='50%25' font-size='120' text-anchor='middle' dy='.3em'%3E🏴‍☠️%3C/text%3E%3C/svg%3E" alt="Shapeless Logo" class="logo">
+        </div>
+
+        <h1>Shapeless</h1>
+
+        <div class="flags">
+            🇮🇱 🕊️ 🇵🇸
+        </div>
+
+        <p class="tagline">Music for Peace</p>
+        <p class="subtitle">A decentralized movement creating collaborative music for peace in Israel & Palestine through AI-moderated communities and viral growth</p>
+    </div>
+</section>
+
+<!-- Studio Image Section -->
+<section class="studio-section">
+    <!-- Replace with your cyberpunk studio image -->
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect fill='%231a1a3e' width='1200' height='600'/%3E%3Ctext x='50%25' y='50%25' fill='%2300ffff' font-size='48' text-anchor='middle' dy='.3em'%3ECyberpunk Studio%3C/text%3E%3C/svg%3E" alt="Cyberpunk Studio" class="studio-image">
+</section>
+
+<!-- Vision Section -->
+<section class="vision-section">
+    <div class="vision-content">
+        <h2>Our Vision</h2>
+        <p>
+            In a world divided by conflict, we choose collaboration. We bring together voices from Israel, Palestine, and around the world to create music that speaks louder than violence. Through AI-moderated Discord communities, we foster respectful dialogue. Through collaborative music tools, we create art together. And through our viral growth model, we turn individual actions into a global wave of awareness and change.
+        </p>
+    </div>
+</section>
+
+<!-- Features Grid -->
+<section class="features">
+    <div class="features-grid">
+        <div class="feature">
+            <div class="feature-icon">🎵</div>
+            <h3>Collaborative Music</h3>
+            <p>Real-time composite music tool to blend multiple video streams and create together, anywhere in the world.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🤖</div>
+            <h3>AI-Moderated Communities</h3>
+            <p>Discord groups where AI ensures respectful, constructive dialogue focused on peace and collaboration.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">📈</div>
+            <h3>Viral Growth Model</h3>
+            <p>Each member invites 2 people per week. Watch our movement grow from dozens to millions exponentially.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">👥</div>
+            <h3>Team-Based Creation</h3>
+            <p>Work in small teams (5-10 people) to create your musical pieces. Coordinate and collaborate together.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🌊</div>
+            <h3>The Mega Wave</h3>
+            <p>Release all music simultaneously - creating a coordinated wave of peace awareness that floods social media.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🕊️</div>
+            <h3>Decentralized Movement</h3>
+            <p>No single leader. No central authority. Just people coming together through music to demand peace.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Cityscape Section -->
+<section class="cityscape">
+    <div class="cityscape-content">
+        <h2>Join the Wave</h2>
+        <p>Music knows no borders. Peace knows no limits.</p>
+    </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="stats-grid">
+        <div class="stat">
+            <div class="stat-number" id="members">42</div>
+            <div class="stat-label">Active Members</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="teams">8</div>
+            <div class="stat-label">Music Teams</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="tracks">3</div>
+            <div class="stat-label">Tracks Created</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number" id="countries">12</div>
+            <div class="stat-label">Countries</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <h2>Ready to Create Peace?</h2>
+    <div class="cta-buttons">
+        <a href="join-movement.html" class="btn btn-primary">Join the Movement</a>
+        <a href="composite.html" class="btn btn-secondary">Try Music Tool</a>
+        <a href="dashboard.html" class="btn btn-tertiary">View Dashboard</a>
+    </div>
+</section>
+
+<script>
+// Animate stat numbers
+function animateNumber(id, target) {
+    const element = document.getElementById(id);
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 30);
+}
+
+window.addEventListener('load', () => {
+    animateNumber('members', 42);
+    animateNumber('teams', 8);
+    animateNumber('tracks', 3);
+    animateNumber('countries', 12);
+});
+
+// Parallax effect for hero
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const scrolled = window.pageYOffset;
+    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+});
+</script>
+
+</body>
+</html>
