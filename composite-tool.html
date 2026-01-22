@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shapeless Composite</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: #0a0e27;
+    overflow: hidden;
+}
+
+#container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#layer1, #layer2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#layer1 { z-index: 1; }
+#layer2 { z-index: 2; opacity: 0.7; mix-blend-mode: screen; }
+
+#controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.9);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    color: #00ffff;
+    font-family: Arial;
+}
+
+input[type="range"] { width: 200px; }
+select { background: #1a1a2e; color: #fff; border: 1px solid #00ffff; padding: 5px; }
+</style>
+</head>
+<body>
+
+<div id="container">
+<iframe id="layer1"
+        allow="camera *; microphone *; autoplay *; display-capture *; fullscreen *"
+        sandbox="allow-same-origin allow-scripts allow-forms"
+></iframe>
+<iframe id="layer2"
+        allow="camera *; microphone *; autoplay *; display-capture *; fullscreen *"
+        sandbox="allow-same-origin allow-scripts allow-forms"
+></iframe>
+</div>
+
+<div id="controls">
+    <h3>🏴‍☠️ Shapeless</h3>
+    <p style="margin-bottom: 15px; font-size: 0.9em;">
+        <a href="/" style="color: #00ffff; text-decoration: none; border: 1px solid #00ffff; padding: 8px 15px; border-radius: 5px; display: inline-block; margin-bottom: 10px;">
+            🕊️ About the Movement
+        </a>
+    </p>
+    <p>Opacity: <span id="opval">70%</span></p>
+    <input type="range" id="opacity" min="0" max="100" value="70" oninput="updateOpacity(this.value)">
+    <p>Blend:</p>
+    <select id="blend" onchange="updateBlend(this.value)">
+        <option value="normal">Normal</option>
+        <option value="screen" selected>Screen</option>
+        <option value="multiply">Multiply</option>
+        <option value="overlay">Overlay</option>
+        <option value="difference">Difference</option>
+    </select>
+</div>
+
+<script>
+window.onload = function() {
+    document.getElementById('layer1').src = 'https://vdo.ninja/?view=shapeless_kitchen';
+    document.getElementById('layer2').src = 'https://vdo.ninja/?view=FFXAuRa';
+};
+
+function updateOpacity(val) {
+    document.getElementById('layer2').style.opacity = val/100;
+    document.getElementById('opval').textContent = val + '%';
+}
+
+function updateBlend(mode) {
+    document.getElementById('layer2').style.mixBlendMode = mode;
+}
+</script>
+
+</body>
+</html>
