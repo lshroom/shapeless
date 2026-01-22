@@ -1,21 +1,4 @@
 {
-  "buildCommand": null,
-  "outputDirectory": ".",
-  "devCommand": null,
-  "installCommand": null,
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/composite.html"
-    },
-    {
-      "source": "/video-composite",
-      "destination": "/video-composite.html"
-    },
-    {
-      "source": "/join",
-      "destination": "/join.html"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
