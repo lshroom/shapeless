@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "buildCommand": "cd peace-platform && npm install && npm run build",
+  "outputDirectory": "peace-platform/.next",
+  "installCommand": "cd peace-platform && npm install"
+}
