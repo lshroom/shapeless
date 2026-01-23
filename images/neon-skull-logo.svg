@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <filter id="neonGlow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="skullGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#cccccc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main skull shape -->
+  <g transform="translate(200, 180)">
+    <!-- Skull top -->
+    <ellipse cx="0" cy="0" rx="80" ry="90" fill="url(#skullGrad)" stroke="#00ffff" stroke-width="3" filter="url(#neonGlow)"/>
+    
+    <!-- Skull jaw -->
+    <ellipse cx="0" cy="60" rx="60" ry="40" fill="url(#skullGrad)" stroke="#00ffff" stroke-width="3" filter="url(#neonGlow)"/>
+    
+    <!-- Eye sockets -->
+    <ellipse cx="-30" cy="-10" rx="20" ry="28" fill="#000000" stroke="#00ffff" stroke-width="2"/>
+    <ellipse cx="30" cy="-10" rx="20" ry="28" fill="#000000" stroke="#00ffff" stroke-width="2"/>
+    
+    <!-- Glowing eyes -->
+    <ellipse cx="-30" cy="-10" rx="12" ry="18" fill="#00ffff" opacity="0.8" filter="url(#neonGlow)">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="30" cy="-10" rx="12" ry="18" fill="#00ffff" opacity="0.8" filter="url(#neonGlow)">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </ellipse>
+    
+    <!-- Nose cavity -->
+    <polygon points="0,20 -12,35 12,35" fill="#000000" stroke="#00ffff" stroke-width="2"/>
+    
+    <!-- Teeth -->
+    <g fill="#ffffff" stroke="#00ffff" stroke-width="1">
+      <rect x="-50" y="55" width="12" height="18" rx="2"/>
+      <rect x="-35" y="55" width="12" height="18" rx="2"/>
+      <rect x="-20" y="55" width="12" height="18" rx="2"/>
+      <rect x="-5" y="55" width="12" height="18" rx="2"/>
+      <rect x="10" y="55" width="12" height="18" rx="2"/>
+      <rect x="25" y="55" width="12" height="18" rx="2"/>
+      <rect x="40" y="55" width="12" height="18" rx="2"/>
+    </g>
+    
+    <!-- Lower teeth -->
+    <g fill="#ffffff" stroke="#00ffff" stroke-width="1">
+      <rect x="-45" y="78" width="10" height="15" rx="2"/>
+      <rect x="-32" y="78" width="10" height="15" rx="2"/>
+      <rect x="-19" y="78" width="10" height="15" rx="2"/>
+      <rect x="-6" y="78" width="10" height="15" rx="2"/>
+      <rect x="7" y="78" width="10" height="15" rx="2"/>
+      <rect x="20" y="78" width="10" height="15" rx="2"/>
+      <rect x="33" y="78" width="10" height="15" rx="2"/>
+    </g>
+    
+    <!-- Skull cracks for detail -->
+    <path d="M -40,-40 Q -35,-30 -38,-20" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+    <path d="M 45,-35 Q 40,-25 42,-15" fill="none" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+  </g>
+
+  <!-- Audio waveforms -->
+  <g stroke="#ff00ff" stroke-width="3" fill="none" filter="url(#neonGlow)" opacity="0.8">
+    <!-- Left waves -->
+    <path d="M 30,180 Q 40,160 50,180 T 70,180">
+      <animate attributeName="d" 
+        values="M 30,180 Q 40,160 50,180 T 70,180;
+                M 30,180 Q 40,200 50,180 T 70,180;
+                M 30,180 Q 40,160 50,180 T 70,180" 
+        dur="1.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 30,200 Q 40,185 50,200 T 70,200">
+      <animate attributeName="d" 
+        values="M 30,200 Q 40,185 50,200 T 70,200;
+                M 30,200 Q 40,215 50,200 T 70,200;
+                M 30,200 Q 40,185 50,200 T 70,200" 
+        dur="1.3s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 30,220 Q 40,205 50,220 T 70,220">
+      <animate attributeName="d" 
+        values="M 30,220 Q 40,205 50,220 T 70,220;
+                M 30,220 Q 40,235 50,220 T 70,220;
+                M 30,220 Q 40,205 50,220 T 70,220" 
+        dur="1.7s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Right waves -->
+    <path d="M 330,180 Q 340,160 350,180 T 370,180">
+      <animate attributeName="d" 
+        values="M 330,180 Q 340,160 350,180 T 370,180;
+                M 330,180 Q 340,200 350,180 T 370,180;
+                M 330,180 Q 340,160 350,180 T 370,180" 
+        dur="1.4s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 330,200 Q 340,185 350,200 T 370,200">
+      <animate attributeName="d" 
+        values="M 330,200 Q 340,185 350,200 T 370,200;
+                M 330,200 Q 340,215 350,200 T 370,200;
+                M 330,200 Q 340,185 350,200 T 370,200" 
+        dur="1.6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 330,220 Q 340,205 350,220 T 370,220">
+      <animate attributeName="d" 
+        values="M 330,220 Q 340,205 350,220 T 370,220;
+                M 330,220 Q 340,235 350,220 T 370,220;
+                M 330,220 Q 340,205 350,220 T 370,220" 
+        dur="1.2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Music notes -->
+  <g fill="#00ff00" font-size="36" opacity="0.7" filter="url(#neonGlow)">
+    <text x="90" y="140">♪
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="2s" repeatCount="indefinite"/>
+    </text>
+    <text x="290" y="140">♫
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+    </text>
+    <text x="75" y="260">♫
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite"/>
+    </text>
+    <text x="305" y="260">♪
+      <animate attributeName="opacity" values="1;0.7;1" dur="1.8s" repeatCount="indefinite"/>
+    </text>
+  </g>
+
+  <!-- Pirate flag -->
+  <g transform="translate(200, 70)">
+    <text x="0" y="0" font-size="50" text-anchor="middle" filter="url(#neonGlow)">🏴‍☠️</text>
+  </g>
+
+  <!-- Outer glow ring -->
+  <circle cx="200" cy="200" r="150" fill="none" stroke="#00ffff" stroke-width="2" opacity="0.3" filter="url(#neonGlow)">
+    <animate attributeName="r" values="150;155;150" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;0.4;0.2" dur="3s" repeatCount="indefinite"/>
+  </circle>
+</svg>
