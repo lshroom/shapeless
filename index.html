@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shapeless Peace</title>
+    <link rel="icon" href="https://i.imgur.com/k6lPzJ2.png" type="image/png"> <!-- Updated favicon to skull neon logo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif; /* Primary font */
+        background-color: #000000; /* Pure black background */
+        color: #e0e0f0;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+      }
+      .font-monospace {
+        font-family: 'Courier Prime', monospace; /* Secondary monospace font */
+      }
+      /* Custom scrollbar for a sleek, dark theme */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a1a2e; /* Darker track */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #9d81ff; /* New accent purple/neon thumb */
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #b69eff; /* Lighter on hover */
+      }
+      html {
+        scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "d3": "https://esm.sh/d3@^7.9.0",
+    "lucide-react": "https://esm.sh/lucide-react@latest"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

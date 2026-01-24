@@ -1,0 +1,8 @@
+{
+  "name": "Shapeless Peace Movement",
+  "description": "A global peace movement platform fostering unity through collaborative music and projects, featuring a unique composite music studio, growth tracker, and AI-moderated Discord communities.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
